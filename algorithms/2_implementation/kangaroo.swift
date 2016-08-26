@@ -14,7 +14,7 @@
 
 
 let inputs = readLine()!.characters.split(" ").map({Int(String($0))!})
-let (x1: Int, v1: Int, x2: Int, v2: Int) = (inputs[0], inputs[1], inputs[2], inputs[3])
+let (x1, v1, x2, v2) = (inputs[0], inputs[1], inputs[2], inputs[3])
 
 func checkKangaroos() -> String {
 
@@ -37,8 +37,8 @@ func checkKangaroos() -> String {
   let xIntercept = (Double(x2) - Double(x1))/(Double(v1) - Double(v2)) // divide by zero if v1 == v2 (tested above)
   if xIntercept % 1 != 0 { return "NO" } // not a whole number therefore the x-intercept is between jumps
   
-  let k1Pos = (v1 * xIntercept) + x1
-  let k2Pos = (v2 * xIntercept) + x2
+  let k1Pos = (v1 * Int(xIntercept)) + x1
+  let k2Pos = (v2 * Int(xIntercept)) + x2
   
   if k1Pos == k2Pos { return "YES" }
   
