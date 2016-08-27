@@ -20,7 +20,7 @@ func lexicographicalPermutation(input: String) -> String {
  - parameter arr: array of type [Character] to check for pivot point
  - returns: Int? pivot found or nil if none found
  */
-    func findPivot(arr: [Character]) -> Int? {
+    func findPivot(arr arr: [Character]) -> Int? {
         var i = arr.count - 1
         while i >= 1 {
             if arr[i] > arr[i - 1] { return (i - 1) }
@@ -33,7 +33,7 @@ func lexicographicalPermutation(input: String) -> String {
     /**
      takes an array of Characters and a pivot(p) and returns the rightmost index in the array after the pivot that is lexicographically higher than p
      */
-    func rightmostSuccessor(arr: [Character], p: Int) -> Int {
+    func rightmostSuccessor(arr arr: [Character], p: Int) -> Int {
         var i = p
         while i < arr.count {
             if arr[i] < arr[p] {return i-1}
@@ -68,15 +68,23 @@ func lexicographicalPermutation(input: String) -> String {
     inputArray[pivot] = rsValue
     inputArray[rs] = pValue
     
-    let head = inputArray.prefix(through: pivot)
-    var tail = inputArray.suffix(from: pivot + 1) // this is the longest non-increasing suffix
+    let head = inputArray.prefix(pivot + 1)
+    var tail = Array(inputArray.suffixFrom(pivot + 1)) // this is the longest non-increasing suffix
     
         // 5: reverse the suffix
         // (e.g., for 0125330, which becamse 0135320, the reversal becomes 0130235)
-    tail.reversed()
+    
+    tail = tail.reverse()
         // Done!
-        
-        
+    //Debug info:
+    /*
+    print("input: \(input)")  
+    print("pivot: \(pivot)")
+    print("rightmost successor: \(rs)")
+    print("inputArray: \(inputArray)")
+    print("head: \(head)")
+    print("tail: \(tail)")
+    */
     return String(head + tail)
 }
 
