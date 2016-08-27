@@ -77,14 +77,14 @@ func lexicographicalPermutation(input: String) -> String {
     tail = tail.reverse()
         // Done!
     //Debug info:
-    
+    /*
     print("input: \(input)")  
     print("pivot: \(pivot)")
     print("rightmost successor: \(rs)")
     print("inputArray: \(inputArray)")
     print("head: \(head)")
     print("tail: \(tail)")
-    
+    */
     return String(head + tail)
 }
 
