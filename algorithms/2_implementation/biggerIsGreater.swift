@@ -34,9 +34,9 @@ func lexicographicalPermutation(input: String) -> String {
      takes an array of Characters and a pivot(p) and returns the rightmost index in the array after the pivot that is lexicographically higher than p
      */
     func rightmostSuccessor(arr arr: [Character], p: Int) -> Int {
-        var i = p
+        var i = p + 1
         while i < arr.count {
-            if arr[i] < arr[p] {return i-1}
+            if arr[i] <= arr[p] {return i-1}
             i += 1
         }
         return i - 1
@@ -77,14 +77,14 @@ func lexicographicalPermutation(input: String) -> String {
     tail = tail.reverse()
         // Done!
     //Debug info:
-    /*
+    
     print("input: \(input)")  
     print("pivot: \(pivot)")
     print("rightmost successor: \(rs)")
     print("inputArray: \(inputArray)")
     print("head: \(head)")
     print("tail: \(tail)")
-    */
+    
     return String(head + tail)
 }
 
