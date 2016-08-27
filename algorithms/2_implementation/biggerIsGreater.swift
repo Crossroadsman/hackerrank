@@ -81,5 +81,5 @@ func lexicographicalPermutation(input: String) -> String {
 }
 
 for element in testArray {
-  print lexicographicalPermutation(element)
+  print (lexicographicalPermutation(element))
 }
