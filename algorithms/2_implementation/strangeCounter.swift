@@ -1,3 +1,4 @@
+import Foundation
 // let each countdown be a sequence
 // the first sequence starts at 1 and has length 3
 var sequence = 1
@@ -59,3 +60,21 @@ lengthOf(sequence: sequence)
 
 sequence = 3
 lengthOf(sequence: sequence)
+
+
+// If we are given t
+// what is the value (i.e., the remaining length of the appropriate sequence)
+// 1. get t [readLine()]
+time = 21
+// 2. determine which sequence (s) t belongs in
+sequence = sequenceFrom(time: time)
+
+// 3. determine the length of s
+let length = lengthOf(sequence: sequence)
+
+// 4. determine how far into into s, t is (d)
+let beginningOfSequence = beginningTimeFrom(sequence: sequence)
+let depth = time - beginningOfSequence
+
+// 5. return length minus d
+print(length - depth)
