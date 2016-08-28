@@ -6,6 +6,7 @@ var time = 1
 
 // the beginning time of each sequence follows the formula
 // 3(2^(s-1)) -2
+// see: https://oeis.org/A033484
 func beginningTimeFrom(sequence: Int) -> Int {
     let s = Double(sequence)
     let t = 3 * pow(2.0, s - 1.0) - 2
