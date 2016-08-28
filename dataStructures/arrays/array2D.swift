@@ -38,19 +38,24 @@ let arr = [
         ]
 */
 
-var maxSum = 0
+var maxSum : Int?
 //var runningTotal = 0
 
 for i in 0 ..< arr.count - 2 {
     
     for j in 0 ..< arr[i].count - 2 {
-        
+        //print("i: \(i), j: \(j)")
+
         let currentSum = hourglassSum(arr: arr, i: i, j: j)
+        //print("currentSum: \(currentSum)")
+        //print("previous maxSum: \(maxSum)")
         //runningTotal += currentSum
-        if currentSum > maxSum { maxSum = currentSum }
+        if maxSum == nil { maxSum = currentSum }
+        if currentSum > maxSum! { maxSum = currentSum }
+        //print("new maxSum: \(maxSum!)")
     }
     
     
 }
 
-print (maxSum)
+print (maxSum!)
