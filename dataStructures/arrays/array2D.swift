@@ -1,5 +1,5 @@
 var arr = [[Int]]()
-for i in 0 ..< 5 {
+for i in 0 ..< 6 {
     let row = readLine()!.characters.split(" ").map {Int(String($0))!}
     arr.append(row)
 }
@@ -40,10 +40,10 @@ let arr = [
 
 var maxSum : Int?
 //var runningTotal = 0
-
-for i in 0 ..< arr.count - 2 {
+//print(arr.count)
+for i in 0 ... arr.count - 3 {
     
-    for j in 0 ..< arr[i].count - 2 {
+    for j in 0 ... arr[i].count - 3 {
         //print("i: \(i), j: \(j)")
 
         let currentSum = hourglassSum(arr: arr, i: i, j: j)
@@ -58,4 +58,4 @@ for i in 0 ..< arr.count - 2 {
     
 }
 
-print (maxSum!)
+print (String(maxSum!))
