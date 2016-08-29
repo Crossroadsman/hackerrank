@@ -13,7 +13,7 @@ let numberOfJumps = numberOfClouds / jumpDistance
 var thunderCost = 0
 for i in 0.stride(to: cloudArray.count, by: jumpDistance) {
     
-    if cloudArray[i] % jumpDistance != 0 {thunderCost += 2}
+    if cloudArray[i] % 2 != 0 {thunderCost += 2}
     //print("i: \(i)")
     //print("thunderCost: \(thunderCost)")
 
