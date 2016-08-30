@@ -5,10 +5,11 @@ for testCase in 0.stride(to: testCases, by: 1) {
     let lineLength = Int(String(readLine()!))!
     let line = readLine()!.characters.split(" ").map { Int(String($0))! }
     
-    var testArray = [Int]()
     var isImpossible: Bool = false
+    var highestRemainingValue = lineLength
+    var bribes = 0
     
-    for i in 1.stride(through: lineLength, by: 1) {
+    for i in lineLength.stride(through: 1, by: -1) {
         let diff = line[i - 1] - i
         
         /* debug
@@ -20,7 +21,20 @@ for testCase in 0.stride(to: testCases, by: 1) {
             isImpossible = true
             break
         }
-        testArray.append(line[i - 1] - i)
+        
+        if line[i - 1] >= highestRemainingValue {
+            highestRemainingValue -= 1
+            continue
+        }
+        
+        for j in (i - 1).stride(through: 1, by: -1) {
+            if line[j - 1] > line[i - 1] {
+                bribes += 1
+            }
+        }
+        
+        
+        highestRemainingValue -= 1
     }
     
     guard !isImpossible else {
@@ -28,6 +42,6 @@ for testCase in 0.stride(to: testCases, by: 1) {
         continue
     }
     
-    print(testArray.filter({$0 > 0}).reduce(0, combine: {$0 + $1}))
+    print(bribes)
        
 }
