@@ -24,17 +24,18 @@ func absolutePermutation(n n: Int, k: Int) -> [Int] {
   
   // do the work here
   var output = [Int]()
-  for i in 1.stride(through: n / (2 * k), by: 1) {
+  let cycles = n / (2 * k)
+  for i in 1.stride(through: cycles, by: 1) {
     // any slot can only be i - k or i + k
     // for 1 ... (k - 1), this can only be i + k (i < k so need to go back through zero to get to -ve)
     // for (n - k) ... n, this can only i - k (i > k so there is no i value large enough to go back through zero)
     
     for j in 1.stride(through: k, by: 1) {
-      let v = (k * (i - 1)) + j
+      let v = (2 * k * i) - (2 * k) + j
       output.append(v + k)
     }
     for j in 1.stride(through: k, by: 1) {
-      let v = (k * i) + j
+      let v = (2 * k * i) - k + j
       output.append(v - k)
     }
     
