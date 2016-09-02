@@ -1,3 +1,5 @@
+let testCases = Int(String(readLine()!))!
+
 /*
 
 In a given sequence from 1 to n
@@ -27,24 +29,33 @@ func absolutePermutation(n n: Int, k: Int) -> [Int] {
     // for 1 ... (k - 1), this can only be i + k (i < k so need to go back through zero to get to -ve)
     // for (n - k) ... n, this can only i - k (i > k so there is no i value large enough to go back through zero)
     
-    for j in 1.stride(to: k, by: 1) {
+    for j in 1.stride(through: k, by: 1) {
       let v = (k * (i - 1)) + j
       output.append(v + k)
     }
-    for j in 1.stride(to: k, by: 1) {
-      let v = (k * (i - 1)) + j
+    for j in 1.stride(through: k, by: 1) {
+      let v = (k * i) + j
       output.append(v - k)
     }
     
   }
-
+  return output
 }
 
-func renderOutput(input: [Int)) -> String {
+func renderOutput(input: [Int]) -> String {
   
   guard input != [-1] else { return "-1" }
   
-  return input.joinWithSeparator(" ")
+  return input.map({String($0)}).joinWithSeparator(" ")
 }
 
-print(renderOutput(absolutePermutation(n: n, k: k)))
+for i in 0.stride(to: testCases, by: 1) {
+    let line = readLine()!.characters.split(" ").map { Int(String($0))! }
+    let (n, k) = (line[0], line[1])
+    
+    /*print(line)
+    print(n)
+    print(k)*/
+    
+    print(renderOutput(absolutePermutation(n: n, k: k)))
+}
