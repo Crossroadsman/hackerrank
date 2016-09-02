@@ -20,6 +20,7 @@ func absolutePermutation(n n: Int, k: Int) -> [Int] {
   guard k != 0 else { return Array(1 ... n) }
   guard n >= 2 * k else { return [-1] }
   guard n % 2 == 0 else { return [-1] }
+  guard (n % k) == 0 else { return [-1] }
   guard (n / k) % 2 == 0 else { return [-1] }
   
   // do the work here
