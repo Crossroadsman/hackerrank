@@ -15,9 +15,28 @@ Note, if k is in the range (and it always will be for this test), it is impossib
 
 func absolutePermutation(n n: Int, k: Int) -> [Int] {
   
+  guard k != 0 else { return Array(1 ... n) }
   guard n >= 2 * k else { return [-1] }
+  guard n % 2 == 0 else { return [-1] }
+  guard (n / k) % 2 == 0 else { return [-1] }
   
   // do the work here
+  var output = [Int]()
+  for i in 1.stride(through: n / (2 * k), by: 1) {
+    // any slot can only be i - k or i + k
+    // for 1 ... (k - 1), this can only be i + k (i < k so need to go back through zero to get to -ve)
+    // for (n - k) ... n, this can only i - k (i > k so there is no i value large enough to go back through zero)
+    
+    for j in 1.stride(to: k, by: 1) {
+      let v = (k * (i - 1)) + j
+      output.append(v + k)
+    }
+    for j in 1.stride(to: k, by: 1) {
+      let v = (k * (i - 1)) + j
+      output.append(v - k)
+    }
+    
+  }
 
 }
 
