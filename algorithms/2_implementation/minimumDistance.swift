@@ -33,31 +33,46 @@
 
 // note any time you get a distance of 1, you can just return 1 since nothing can do better than 1
 
+// get input
 let n = Int(String(readLine()!))!
-var r = n
-let numbers = readLine()!.characters.split(" ").map { Int(String($0))! }
-var matches = [Int](count: n, repeatedValue: 0)
-var shortestDistance: Int?
+let arr = readLine()!.characters.split(" ").map { Int(String($0))! }
 
-for i in 0.stride(to: r, by: 1) {
-    
-    if matches[i] == 1 { continue }
-    
-    for j in (r - 1).stride(through: 1, by: -1) {
-        
-        if matches[j] == 1 { continue }
-        
-        if numbers[i] == numbers[j] {
-            if j == r - 1 {
-                r -= 1
+var distance = -1
+var foundCurrent: Bool = false
+var smallestDistanceFound: Int = 1_000_000 // larger than the largest sample set
+
+func findDistance() -> Int {
+
+    for i in 1.stride(through: 9, by: 1) {
+        //print("current i: \(i)")
+
+        foundCurrent = false
+        distance = 0
+        for j in 0.stride(to: n, by: 1) {
+            if foundCurrent == true { distance += 1 }
+            if arr[j] != i {
+                continue
+            } else {
+                if foundCurrent == false {
+                    foundCurrent = true
+                } else {
+                    if foundCurrent == true {
+                        if distance == 1 { return 1 }
+                        if distance < smallestDistanceFound { smallestDistanceFound = distance }
+                        distance = 0
+                        continue
+                    }
+                }
             }
-            
-            matches[i] = 1
-            matches[j] = 1
+        
         
         }
         
-        
     }
-    
+    if smallestDistanceFound < 1_000_000 { return smallestDistanceFound}
+    return -1
+
+
 }
+
+print(findDistance())
