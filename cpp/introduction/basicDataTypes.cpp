@@ -12,12 +12,7 @@ int main() {
     float f;
     double d;
 
-    scanf("%d", &i); // ampersand as we are putting the data into the memory location pointed to by i
-    scanf("%ld", &l);
-    scanf("%lld", &ll);
-    scanf("%c", &c);
-    scanf("%f", &f);
-    scanf("%lf", &d);
+    scanf("%d %ld %lld %c %f %lf", &i, &l, &ll, &c, &f, &d); // ampersand as we are putting the data into the memory location pointed to by i
 
     printf("%d\n", i);
     printf("%ld\n", l);
@@ -28,4 +23,3 @@ int main() {
     
     return 0;
 }
-
