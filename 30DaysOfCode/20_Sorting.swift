@@ -1,21 +1,19 @@
-/ Enter your code here. Read input from STDIN. Print output to STDOUT
-
-
+/*
 func bubbleSort(inArr: [Int]) -> [Int] {
     
     var arr = inArr
     
-    func swap(_ a, _ b) {
+    func swap(a: Int, _ b: Int) {
         let t = arr[a]
         arr[a] = arr[b]
         arr[b] = t
     }
     
-    var totalSwaps = 0
+    var swapsInThisArrayTraversal = 0
     
-    for i in 0.stride(to: arr.count, by: 1) {
+    for _ in 0.stride(to: arr.count, by: 1) {
     
-        for j in 0.stride(to: arr.count - 1, by 1) {
+        for j in 0.stride(to: arr.count - 1, by: 1) {
         
             if arr[j] > arr[j + 1] {
                 swap(j, j + 1)
@@ -24,7 +22,7 @@ func bubbleSort(inArr: [Int]) -> [Int] {
         
         }
         
-        if 0 == swapsIntThisArrayTraversal {
+        if 0 == swapsInThisArrayTraversal {
             break
         }
         
@@ -36,12 +34,13 @@ func bubbleSort(inArr: [Int]) -> [Int] {
     return arr
     
 }
+*/
 
 func bubbleSortWithNumberOfSwaps(inArr: [Int]) -> (arr: [Int], swaps: Int) {
     
     var arr = inArr
     
-    func swap(_ a, _ b) {
+    func swap(a: Int, _ b: Int) {
         let t = arr[a]
         arr[a] = arr[b]
         arr[b] = t
@@ -50,9 +49,9 @@ func bubbleSortWithNumberOfSwaps(inArr: [Int]) -> (arr: [Int], swaps: Int) {
     var totalSwaps = 0
     var swapsInThisArrayTraversal = 0
     
-    for i in 0.stride(to: arr.count, by: 1) {
+    for _ in 0.stride(to: arr.count, by: 1) {
     
-        for j in 0.stride(to: arr.count - 1, by 1) {
+        for j in 0.stride(to: arr.count - 1, by: 1) {
         
             if arr[j] > arr[j + 1] {
                 swap(j, j + 1)
@@ -61,7 +60,7 @@ func bubbleSortWithNumberOfSwaps(inArr: [Int]) -> (arr: [Int], swaps: Int) {
         
         }
         
-        if 0 == swapsIntThisArrayTraversal {
+        if 0 == swapsInThisArrayTraversal {
             break
         }
         
@@ -78,7 +77,9 @@ func bubbleSortWithNumberOfSwaps(inArr: [Int]) -> (arr: [Int], swaps: Int) {
 func reportOnSort(arr: [Int]) -> String {
 
     let (sorted, swaps) = bubbleSortWithNumberOfSwaps(arr)
-    return "Array is sorted in \(swaps) swaps.\nFirst Element: \(sorted[0])\nLast Element: \(sorted[1])"
+    let first = sorted[0]
+    let last = sorted.last!
+    return "Array is sorted in \(swaps) swaps.\nFirst Element: \(first)\nLast Element: \(last)"
 
 }
 
