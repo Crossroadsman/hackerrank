@@ -36,18 +36,20 @@ class LinkedList {
         var current = head!
         
         while current.next != nil {
+            
             if current.next?.data == current.data {
-                // current.next.next doesn't exist
-                guard current.next!.next != nil else { current.next = nil; break }
                 
-                // current.next.next exists and isnt same as current
-                if current.next?.next?.data != current.data {
-                    current.next = current.next?.next
-                    current = current.next!
-                    continue
+                var temp = current
+                while temp.next?.data == current.data {
+                    temp = temp.next!
                 }
-                // current.next.next exists and is same as current
-                current.next = current.next?.next
+                if temp.next == nil {
+                    current.next = nil
+                    break
+                } else {
+                    current.next = temp.next
+                }
+                
                 
             }
             current = current.next!
