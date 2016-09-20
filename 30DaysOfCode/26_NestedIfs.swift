@@ -21,7 +21,7 @@ func determineFine(due due: (d: Int, m: Int, y: Int), actual: (d: Int, m: Int, y
     if actual.m < due.m { return 0}
     
     if actual.d > due.d { return dayFine * (actual.d - due.d) }
-    if actual.d < due.d { returnm 0}
+    if actual.d < due.d { return 0}
     return 0
 }
 
