@@ -14,9 +14,14 @@ func determineFine(due due: (d: Int, m: Int, y: Int), actual: (d: Int, m: Int, y
     let monthFine = 500
     let dayFine = 15
     
+    if actual.y < due.y { return 0}
     if actual.y > due.y { return yearFine }
+    
     if actual.m > due.m { return monthFine * (actual.m - due.m) }
+    if actual.m < due.m { return 0}
+    
     if actual.d > due.d { return dayFine * (actual.d - due.d) }
+    if actual.d < due.d { returnm 0}
     return 0
 }
 
