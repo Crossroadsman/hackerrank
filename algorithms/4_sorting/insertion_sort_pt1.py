@@ -97,16 +97,18 @@ def insertionSort(arr):
        array is fully sorted
     '''
     e = arr[-1]
-    is_sorted = False
-    
-    for i in range(len(arr) - 2, -1, -1):
+    i = len(arr) - 2
+    while i >= 0:    
         if arr[i] > e:
             arr[i+1] = arr[i]
             print( pretty_arr(arr) )
+            i -= 1
         else:
             arr[i+1] = e
             print( pretty_arr(arr) )
             return
+    arr[0] = e
+    print( pretty_arr(arr) )
 
 
 # MAIN
