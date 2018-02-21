@@ -75,6 +75,15 @@ def read_input():
     line2 = process_to_int_list( input() )
     return (line1, line2)
 
+# HELPER FUNCTIONS: Conviently working with None
+# ----------------------------------------------
+def append_or_create(arr, value):
+    if arr == []:
+        return [value]
+    else:
+        arr.append(value)
+        return arr
+
 # HELPER FUNCTIONS: Value Formatting
 # ----------------------------------
 def pretty_arr(arr):
@@ -93,7 +102,7 @@ def insertionSort(arr):
     def remove_and_append(in_arr, out_arr):
         '''performs the break and append portion of the algorithm
         '''
-        out_arr.append( in_arr.pop() )
+        out_arr = append_or_create(out_arr, in_arr.pop())
         return (in_arr, out_arr)
 
     def sortRow(arr):
@@ -108,19 +117,17 @@ def insertionSort(arr):
         while i >= 0:    
             if arr[i] > e:
                 arr[i+1] = arr[i]
-                print( pretty_arr(arr) )
                 i -= 1
             else:
                 arr[i+1] = e
-                print( pretty_arr(arr) )
-                return
+                return arr
         arr[0] = e
         return arr
         
     while len(arr) > 0:
         (arr, working_arr) = remove_and_append(arr, working_arr)
         working_arr = sortRow(working_arr)
-        print( pretty_arr(arr) )
+        print( pretty_arr(arr + working_arr) )
 
 
 
