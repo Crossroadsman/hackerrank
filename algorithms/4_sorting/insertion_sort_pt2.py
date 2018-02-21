@@ -75,7 +75,7 @@ def read_input():
     line2 = process_to_int_list( input() )
     return (line1, line2)
 
-# HELPER FUNCTIONS: Conviently working with None
+# HELPER FUNCTIONS: Conveniently working with None
 # ----------------------------------------------
 def append_or_create(arr, value):
     if arr == []:
@@ -102,7 +102,13 @@ def insertionSort(arr):
     def remove_and_append(in_arr, out_arr):
         '''performs the break and append portion of the algorithm
         '''
-        out_arr = append_or_create(out_arr, in_arr.pop())
+        # no point sorting a list of length 1, so first time round, 
+        # take two initial elements
+        if out_arr == []:
+            out_arr = append_or_create(out_arr, in_arr.pop(0))
+            out_arr = append_or_create(out_arr, in_arr.pop(0))
+        else:
+            out_arr = append_or_create(out_arr, in_arr.pop(0))
         return (in_arr, out_arr)
 
     def sortRow(arr):
@@ -127,7 +133,7 @@ def insertionSort(arr):
     while len(arr) > 0:
         (arr, working_arr) = remove_and_append(arr, working_arr)
         working_arr = sortRow(working_arr)
-        print( pretty_arr(arr + working_arr) )
+        print( pretty_arr(working_arr + arr) )
 
 
 
