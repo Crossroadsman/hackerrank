@@ -98,7 +98,7 @@ def insertion_sort(l):
         j = i-1 # the rightmost unsorted element
         print('l[j] is: {}'.format(l[j]))
         key = l[i] # the value of the first unsorted element
-        while (j > 0) and (l[j] > key):
+        while (j >= 0) and (l[j] > key):
            l[j+1] = l[j]
            j -= 1
         l[j+1] = key
