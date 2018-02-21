@@ -87,14 +87,31 @@ Sample Output
 -------------
 1 2 3 4 5 6 
 '''
+
 def insertion_sort(l):
+    print('prove initialisation')
+    print('--------------------')
+    print('prove that initially the subarray is just the first element,')
+    print('which is sorted by definition')
+    print('l[j] will be the first element: {}'.format(l[0]))
     for i in range(1, len(l)):
-        j = i-1
-        key = l[i]
+        j = i-1 # the rightmost unsorted element
+        print('l[j] is: {}'.format(l[j]))
+        key = l[i] # the value of the first unsorted element
         while (j > 0) and (l[j] > key):
            l[j+1] = l[j]
            j -= 1
         l[j+1] = key
+        print('prove maintenance')
+        print('-----------------')
+        print('prove that at the end of each iteration the subarray is')
+        print('sorted:')
+        print('subarray is from 0 to i ({}):'.format(i))
+        print(l[0:i+1])
+    print('prove termination')
+    print('-----------------')
+    print('array is now fully sorted:')
+    print(l)
 
 
 m = int(input().strip())
