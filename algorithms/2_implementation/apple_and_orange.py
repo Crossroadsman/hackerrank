@@ -20,6 +20,23 @@ def read_input():
     lines = [line1, line2, line3, line4, line5]
     return lines
 
+# solve function
+# --------------
+def position_from_distance(base: int, distance: int) -> int:
+    return distance + base
+
+def did_hit(position, target_start, target_end) -> bool:
+    if position in range(target_start, target_end + 1):
+        return True
+    else:
+        return False
+
+def count_hits(positions, target_start, target_end) -> int:
+    counter = 0
+    for position in positions:
+        if did_hit(position, target_start, target_end):
+            counter += 1
+    return counter
 
 if __name__ == '__main__':
     lines = read_input()
@@ -35,13 +52,25 @@ if __name__ == '__main__':
     m_distances = lines[3] # positions of apples relative to larry
     n_distances = lines[4] # positions of oranges relative to rob
 
+    m_positions = [position_from_distance(base=a, distance=x) for x in m_distances]
+    n_positions = [position_from_distance(base=b, distance=x) for x in n_distances]
+
+    m_hits = count_hits(m_positions, s, t)
+    n_hits = count_hits(n_positions, s, t)
+
     print('Sam\'s house covers positions {} to {}'.format(s, t))
     
     print('larry is at position {}'.format(a))
     print('he threw {} apples which landed at relative positions:'.format(m))
     print(m_distances)
+    print('and absolute positions:')
+    print(m_positions)
+    print('which produced {} hits'.format(m_hits))
 
     print('rob is at position {}'.format(b))
     print('he threw {} oranges which landed at relative positions:'.format(n))
     print(n_distances)
+    print('and absolute positions:')
+    print(n_positions)
+    print('which produced {} hits'.format(n_hits))
     
