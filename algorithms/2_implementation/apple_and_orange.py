@@ -20,6 +20,15 @@ def read_input():
     lines = [line1, line2, line3, line4, line5]
     return lines
 
+# HELPER FUNCTIONS: Value Formatting
+# ----------------------------------
+def pretty_arr(arr):
+    '''Used for taking an array and converting to a space-separated string
+       e.g., [1, 2, 3] becomes '1 2 3'
+    '''
+    arr = [str(x) for x in arr]
+    return ' '.join(arr)
+
 # solve function
 # --------------
 def position_from_distance(base: int, distance: int) -> int:
@@ -58,6 +67,8 @@ if __name__ == '__main__':
     m_hits = count_hits(m_positions, s, t)
     n_hits = count_hits(n_positions, s, t)
 
+    output = pretty_arr( [m_hits, n_hits] )
+    '''
     print('Sam\'s house covers positions {} to {}'.format(s, t))
     
     print('larry is at position {}'.format(a))
@@ -73,4 +84,6 @@ if __name__ == '__main__':
     print('and absolute positions:')
     print(n_positions)
     print('which produced {} hits'.format(n_hits))
+    '''
+    print(output)
     
