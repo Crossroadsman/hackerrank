@@ -67,7 +67,15 @@ if __name__ == '__main__':
     m_hits = count_hits(m_positions, s, t)
     n_hits = count_hits(n_positions, s, t)
 
+    # this is the output as defined in the problem statement
+    '''
     output = pretty_arr( [m_hits, n_hits] )
+    print(output)
+    '''
+
+    # this is the output as the compiler appears to want
+    for value in [m_hits, n_hits]:
+        print(value)
     '''
     print('Sam\'s house covers positions {} to {}'.format(s, t))
     
@@ -85,5 +93,3 @@ if __name__ == '__main__':
     print(n_positions)
     print('which produced {} hits'.format(n_hits))
     '''
-    print(output)
-    
