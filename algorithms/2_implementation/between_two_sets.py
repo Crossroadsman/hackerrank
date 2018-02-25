@@ -77,4 +77,4 @@ if __name__ == '__main__':
             continue
             print("i is a factor of all members of b ({})".format(b))
         satisfiers.append(i)
-    print(satisfiers)
+    print(len(satisfiers))

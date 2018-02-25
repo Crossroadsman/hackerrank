@@ -55,3 +55,33 @@ def lt(a, b):
     else:
         return a < b
 
+# HELPER FUNCTIONS: Math
+# ----------------------
+def is_factor(a, b) -> bool:
+    '''returns true if a is a factor of b otherwise false
+
+    e.g.1, is_factor(2, 4) # True
+    e.g.2, is_factor(3, 5) # False
+    '''
+    return b % a == 0
+
+def factors(val: int, arr: [int]) -> [int]:
+    '''`val` is an integer, `arr` a list of integers
+       the output is a list of all the integers in `arr` that
+       are factors of `val`
+
+       e.g.1, factors(val=12, arr=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) # [1,2,3,4,6]
+       e.g.2, factors(val=16, arr=[1,4,9,16]) # [1,4,16] 
+    '''
+    return [x for x in arr if is_factor(x, val)]
+
+def is_factor_of_all(val: int, arr: [int]) -> bool:
+    '''returns true if val is a factor of every element in arr, otherwise false
+
+    e.g.1, val=2,arr=[2,4,6,8] --> True
+    e.g.2, val=3,arr=[3,4,5,6] --> False
+    '''
+    for x in arr:
+        if not is_factor(val, x):
+            return False
+    return True
