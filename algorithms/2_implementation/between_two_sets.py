@@ -72,9 +72,7 @@ if __name__ == '__main__':
     for i in range(max(a), min(b) + 1):
         if factors(val=i, arr=a) != a:
             continue
-            print("all members of a ({}) are factors of i ({})".format(a, i))
         if not is_factor_of_all(val=i, arr=b):
             continue
-            print("i is a factor of all members of b ({})".format(b))
         satisfiers.append(i)
     print(len(satisfiers))
